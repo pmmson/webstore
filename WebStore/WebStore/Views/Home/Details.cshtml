@@ -1,0 +1,19 @@
+﻿@model WebStore.Models.EmployeeView
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <p>ID: @Model.Id</p>
+    <p>Имя: @Model.FirstName</p>
+    <p>Фамилия: @Model.SurName</p>
+    <p>Отчество: @Model.Patronymic</p>
+    <p>Возраст: @Model.Age</p>
+    <p>Должность: @Model.Position</p>
+    <p>@Html.ActionLink("Назад", "Index")</p>
+</body>
+</html>
