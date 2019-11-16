@@ -1,0 +1,35 @@
+﻿@model WebStore.Models.EmployeeView
+@{
+    ViewBag.Title = "Информация о сотруднике";
+}
+
+<h3>@ViewBag.Title</h3>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Фамилия</th>
+        <td>@Model.SurName</td>
+    </tr>
+    <tr>
+        <th>Имя</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+    <th>Отчество</th>
+    <td>@Model.Patronymic</td>
+    </tr>
+    <tr>
+        <th>Возраст</th>
+        <td>@Model.Age</td>
+    </tr>
+    <tr>
+        <th>Должность</th>
+        <td>@Model.Position</td>
+    </tr>
+</table>
+
+@Html.ActionLink("Назад", "Index")
