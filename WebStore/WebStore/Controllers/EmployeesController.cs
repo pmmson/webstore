@@ -9,7 +9,7 @@ namespace WebStore.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly List<EmployeeView> _employees = new List<EmployeeView>
+        private readonly List<EmployeeView> _Employees = new List<EmployeeView>
         {
             new EmployeeView
             {
@@ -42,20 +42,16 @@ namespace WebStore.Controllers
 
         public IActionResult Index()
         {
-            return View(_employees);
+            return View(_Employees);
         }
 
         public IActionResult Details(int id)
         {
-            foreach (EmployeeView employee in _employees)
-            {
-                if (employee.Id == id)
-                {
-                    return View(employee);
-                }
-            }
+            var employee = _Employees.FirstOrDefault(e => e.Id == id);
+            if (employee is null)
+                return Content("No Data Found");
 
-            return Content("No data found");
+            return View(employee);
         }
     }
 }

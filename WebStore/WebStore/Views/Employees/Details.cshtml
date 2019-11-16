@@ -5,12 +5,31 @@
 
 <h3>@ViewBag.Title</h3>
 
-<body>
-    <p>ID: @Model.Id</p>
-    <p>Имя: @Model.FirstName</p>
-    <p>Фамилия: @Model.SurName</p>
-    <p>Отчество: @Model.Patronymic</p>
-    <p>Возраст: @Model.Age</p>
-    <p>Должность: @Model.Position</p>
-    <p>@Html.ActionLink("Назад", "Index")</p>
-</body>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Фамилия</th>
+        <td>@Model.SurName</td>
+    </tr>
+    <tr>
+        <th>Имя</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+    <th>Отчество</th>
+    <td>@Model.Patronymic</td>
+    </tr>
+    <tr>
+        <th>Возраст</th>
+        <td>@Model.Age</td>
+    </tr>
+    <tr>
+        <th>Должность</th>
+        <td>@Model.Position</td>
+    </tr>
+</table>
+
+@Html.ActionLink("Назад", "Index")
