@@ -18,7 +18,7 @@ namespace WebStore.Controllers
                 SurName = "Иванов",
                 Patronymic = "Иванович",
                 Age = 22,
-                Position = "инженер"
+                Position = "консультант"
             },
             new EmployeeView
             {
@@ -27,7 +27,7 @@ namespace WebStore.Controllers
                 SurName = "Петров",
                 Patronymic = "Иванович",
                 Age = 35,
-                Position = "слесарь"
+                Position = "товаровед"
             },
             new EmployeeView
             {
@@ -36,7 +36,7 @@ namespace WebStore.Controllers
                 SurName = "Сидоров",
                 Patronymic = "Викторович",
                 Age = 39,
-                Position = "повар"
+                Position = "менеджер"
             }
         };
 

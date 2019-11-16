@@ -1,12 +1,10 @@
 ﻿@model WebStore.Models.EmployeeView
+@{
+    ViewBag.Title = "Информация о сотруднике";
+}
 
-<!DOCTYPE html>
+<h3>@ViewBag.Title</h3>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
 <body>
     <p>ID: @Model.Id</p>
     <p>Имя: @Model.FirstName</p>
@@ -16,4 +14,3 @@
     <p>Должность: @Model.Position</p>
     <p>@Html.ActionLink("Назад", "Index")</p>
 </body>
-</html>
