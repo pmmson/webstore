@@ -49,7 +49,7 @@ namespace WebStore.Controllers
         {
             var employee = _Employees.FirstOrDefault(e => e.Id == id);
             if (employee is null)
-                return Content("No Data Found");
+                return View("Error404");
 
             return View(employee);
         }
