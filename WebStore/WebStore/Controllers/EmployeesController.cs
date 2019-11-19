@@ -3,55 +3,81 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 
 namespace WebStore.Controllers
 {
+    [Route("users")]
     public class EmployeesController : Controller
     {
-        private readonly List<EmployeeView> _Employees = new List<EmployeeView>
-        {
-            new EmployeeView
-            {
-                Id = 1,
-                FirstName = "Иван",
-                SurName = "Иванов",
-                Patronymic = "Иванович",
-                Age = 22,
-                Position = "консультант"
-            },
-            new EmployeeView
-            {
-                Id = 2,
-                FirstName = "Владислав",
-                SurName = "Петров",
-                Patronymic = "Иванович",
-                Age = 35,
-                Position = "товаровед"
-            },
-            new EmployeeView
-            {
-                Id = 3,
-                FirstName = "Александр",
-                SurName = "Сидоров",
-                Patronymic = "Викторович",
-                Age = 39,
-                Position = "менеджер"
-            }
-        };
+        private readonly IEmployeesData _employeesData;
+
+        public EmployeesController(IEmployeesData employeesData) => _employeesData = employeesData;
 
         public IActionResult Index()
         {
-            return View(_Employees);
+            return View(_employeesData.GetAll());
         }
 
+        [Route("{id}")]
         public IActionResult Details(int id)
         {
-            var employee = _Employees.FirstOrDefault(e => e.Id == id);
+            var employee = _employeesData.GetById(id);
             if (employee is null)
                 return View("Error404");
 
             return View(employee);
+        }
+
+        [Route("edit/{id?}")]
+        public IActionResult Edit(int? id)
+        {
+            EmployeeView model;
+            if (id.HasValue)
+            {
+                model = _employeesData.GetById(id.Value);
+                if (model is null)
+                    return View("Error404");
+            }
+            else
+            {
+                model = new EmployeeView();
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("edit/{id?}")]
+        public IActionResult Edit(EmployeeView model)
+        {
+            if(model.Id > 0)
+            {
+                var dbItem = _employeesData.GetById(model.Id);
+
+                if (model is null)
+                    return View("Error404");
+
+                dbItem.FirstName = model.FirstName;
+                dbItem.SurName = model.SurName;
+                dbItem.Patronymic = model.Patronymic;
+                dbItem.Age = model.Age;
+                dbItem.Position = model.Position;
+            }
+            else
+            {
+                _employeesData.AddNew(model);
+            }
+            _employeesData.Commit();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Route("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _employeesData.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

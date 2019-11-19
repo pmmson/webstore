@@ -5,6 +5,8 @@
 
 <h3>@ViewBag.Title</h3>
 
+<a asp-action="Edit" class="btn btn-success">Добавить</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -21,6 +23,10 @@
         <td>@item.FirstName</td>
         <td>@item.Patronymic</td>
         <td>@item.Age</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+        </td>
     </tr>
     }
 </table>
