@@ -37,7 +37,7 @@ namespace WebStore.Controllers
             if (id.HasValue)
             {
                 model = _employeesData.GetById(id.Value);
-                if (ReferenceEquals(model, null))
+                if (model is null)
                     return View("Error404");
             }
             else
@@ -55,7 +55,7 @@ namespace WebStore.Controllers
             {
                 var dbItem = _employeesData.GetById(model.Id);
 
-                if (ReferenceEquals(model, null))
+                if (model is null)
                     return View("Error404");
 
                 dbItem.FirstName = model.FirstName;
