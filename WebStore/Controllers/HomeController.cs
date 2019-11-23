@@ -23,10 +23,6 @@ namespace WebStore.Controllers
 
         public IActionResult Error404() => View();
 
-        public IActionResult ProductDetails() => View();
-
-        public IActionResult Shop() => View();
-
         public IActionResult ContactUs() => View();
     }
 }
