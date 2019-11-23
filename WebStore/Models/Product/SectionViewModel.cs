@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebStore.Domain.Entities.Base.Interfaces;
 
-namespace WebStore.Models
+namespace WebStore.Models.Product
 {
     public class SectionViewModel : INamedEntity, IOrderedEntity
     {
