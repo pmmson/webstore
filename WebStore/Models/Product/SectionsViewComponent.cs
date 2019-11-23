@@ -16,7 +16,7 @@ namespace WebStore.Models.Product
             _productData = productData;
         }
 
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var sections = GetSections();
             return View(sections);
