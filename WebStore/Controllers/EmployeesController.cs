@@ -82,6 +82,7 @@ namespace WebStore.Controllers
             return View(model);
         }
 
+        // TODO: сделать как на вебинаре!
         [Route("delete/{id}")]
         public IActionResult Delete(int id)
         {
