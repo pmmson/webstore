@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebStore.DomainNew.Entities;
+using WebStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
