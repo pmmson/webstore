@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.Context;
 using WebStore.Infrastructure.Implementations;
+using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Infrastructure.Interfaces;
 
 namespace WebStore
@@ -29,7 +30,8 @@ namespace WebStore
             services.AddMvc();
 
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+            //services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
