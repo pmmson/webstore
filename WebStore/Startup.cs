@@ -49,7 +49,7 @@ namespace WebStore
                 options.Lockout.MaxFailedAccessAttempts = 10;
                 options.Lockout.AllowedForNewUsers = true;
                 //User
-                options.User.RequireUniqueEmail = true;
+                options.User.RequireUniqueEmail = false;
 
             });
 
@@ -59,7 +59,7 @@ namespace WebStore
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Expiration = TimeSpan.FromDays(150);
                 options.LoginPath = "/Account/Login";
-                options.LogoutPath = "Account/Logout";
+                options.LogoutPath = "/Account/Logout";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
