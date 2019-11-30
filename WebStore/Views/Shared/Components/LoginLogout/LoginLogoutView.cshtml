@@ -8,7 +8,7 @@
         <a href="#" class="btn btn-link"><i class="fa fa-star"></i> Список желаний</a>
         <a asp-controller="Home" asp-action="CheckOut" class="btn btn-link"><i class="fa fa-crosshairs"></i> Заказы</a>
         <a asp-controller="Home" asp-action="Cart" class="btn btn-link"><i class="fa fa-shopping-cart"></i> Корзина</a>
-        <button form="form_submit" type="submit" class="btn btn-link" style="color:red"><i class="fa fa-sign-out-alt"></i> Выход</button>
+        <button form="form_submit" type="submit" class="btn btn-link" style="outline:none; color:red"><i class="fa fa-sign-out-alt"></i> Выход</button>
     </div>
     <form id=form_submit asp-controller="Account" asp-action="Logout" asp-antiforgery="true" method="post"></form>
 </div>
