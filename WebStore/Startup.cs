@@ -49,7 +49,7 @@ namespace WebStore
                 options.Lockout.MaxFailedAccessAttempts = 10;
                 options.Lockout.AllowedForNewUsers = true;
                 //User
-                options.User.RequireUniqueEmail = false;
+                options.User.RequireUniqueEmail = false; // грабли !
 
             });
 
