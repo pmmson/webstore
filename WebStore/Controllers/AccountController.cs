@@ -23,7 +23,7 @@ namespace WebStore.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
-            return View(new LoginViewModel() { ReturnUrl = returnUrl }); ;
+            return View(new LoginViewModel { ReturnUrl = returnUrl }); ;
         }
 
         [HttpPost, ValidateAntiForgeryToken]
