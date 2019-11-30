@@ -21,9 +21,9 @@ namespace WebStore.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl)
         {
-            return View(new LoginViewModel());
+            return View(new LoginViewModel() { ReturnUrl = returnUrl }); ;
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -31,7 +31,8 @@ namespace WebStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var loginResult = await _signInManager.PasswordSignInAsync(model.UserName,
+                var loginResult = await _signInManager.PasswordSignInAsync(
+                    model.UserName,
                     model.Password,
                     model.RememberMe,
                     lockoutOnFailure: false); //Проверяем логин/пароль пользователя
@@ -47,6 +48,7 @@ namespace WebStore.Controllers
                 }
 
             }
+
             ModelState.AddModelError("", "Вход невозможен"); //говорим пользователю, что вход невозможен
 
             return View(model);
