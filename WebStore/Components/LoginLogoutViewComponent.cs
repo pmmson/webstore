@@ -10,7 +10,14 @@ namespace WebStore.Components
     {
         public IViewComponentResult Invoke()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View("LoginLogoutView");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
