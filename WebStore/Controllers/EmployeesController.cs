@@ -51,28 +51,38 @@ namespace WebStore.Controllers
         [Route("edit/{id?}")]
         public IActionResult Edit(EmployeeView model)
         {
-            if(model.Id > 0)
+            if(model.Age < 18 || model.Age > 65)
             {
-                var dbItem = _employeesData.GetById(model.Id);
-
-                if (model is null)
-                    return View("Error404");
-
-                dbItem.FirstName = model.FirstName;
-                dbItem.SurName = model.SurName;
-                dbItem.Patronymic = model.Patronymic;
-                dbItem.Age = model.Age;
-                dbItem.Position = model.Position;
+                ModelState.AddModelError("Age", "Ошибка! Возраст не может быть меньше 18 и больше 65!");
             }
-            else
+            if (ModelState.IsValid)
             {
-                _employeesData.AddNew(model);
-            }
-            _employeesData.Commit();
+                if (model.Id > 0)
+                {
+                    var dbItem = _employeesData.GetById(model.Id);
 
-            return RedirectToAction(nameof(Index));
+                    if (model is null)
+                        return View("Error404");
+
+                    dbItem.FirstName = model.FirstName;
+                    dbItem.SurName = model.SurName;
+                    dbItem.Patronymic = model.Patronymic;
+                    dbItem.Age = model.Age;
+                    dbItem.Position = model.Position;
+                }
+                else
+                {
+                    _employeesData.AddNew(model);
+                }
+                _employeesData.Commit();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
         }
 
+        // TODO: сделать как на вебинаре!
         [Route("delete/{id}")]
         public IActionResult Delete(int id)
         {
