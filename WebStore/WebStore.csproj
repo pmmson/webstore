@@ -18,11 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebStore.Domain\WebStore.Domain.csproj" />
+    <Folder Include="Views\Home\Partial\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\Partial\" />
+    <ProjectReference Include="..\WebStore.DAL\WebStore.DAL.csproj" />
+    <ProjectReference Include="..\WebStore.DomainNew\WebStore.DomainNew.csproj" />
   </ItemGroup>
 
 </Project>
