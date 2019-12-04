@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.Context;
+using WebStore.DomainNew.Entities;
 using WebStore.Infrastructure.Implementations;
 using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Infrastructure.Interfaces;
@@ -33,6 +35,34 @@ namespace WebStore
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SqlProductData>();
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<WebStoreContext>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password
+                options.Password.RequiredLength = 6;
+                //Lockout
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+                //User
+                options.User.RequireUniqueEmail = false; // грабли !
+
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                //Cookie
+                options.Cookie.HttpOnly = true;
+                options.Cookie.Expiration = TimeSpan.FromDays(150);
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +75,8 @@ namespace WebStore
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
