@@ -13,9 +13,14 @@
             <div class="login-form">
                 <!--login form-->
                 <h2>Войти в свой аккаунт</h2>
-                <form asp-action="Login" >
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label asp-for="UserName" class="sr-only"></label>
                     <input asp-for="UserName" placeholder="@nameof(Model.UserName)" />
+                    
+                    <label asp-for="Password" class="sr-only"></label>
                     <input asp-for="Password" placeholder="@nameof(Model.Password)" />
+                    
                     @Html.HiddenFor(Model => Model.ReturnUrl)
                     <span>
                         <input asp-for="RememberMe" class="checkbox">

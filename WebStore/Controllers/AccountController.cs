@@ -72,7 +72,7 @@ namespace WebStore.Controllers
             if (createResult.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false); //если успешно - производим логин
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
             foreach (var identityError in createResult.Errors) //выводим ошибки
