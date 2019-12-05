@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Home\Partial\" />
+    <Folder Include="Models\Cart\" />
   </ItemGroup>
 
   <ItemGroup>
