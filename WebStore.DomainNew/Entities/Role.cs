@@ -2,8 +2,8 @@
 
 namespace WebStore.DomainNew.Entities
 {
-    public class User : IdentityUser
+    public class Role : IdentityRole
     {
-
+        
     }
 }
