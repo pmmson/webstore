@@ -33,6 +33,7 @@ namespace WebStore.Controllers
         }
 
         [Route("edit/{id?}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(int? id)
         {
             EmployeeView model;
@@ -51,6 +52,7 @@ namespace WebStore.Controllers
 
         [HttpPost]
         [Route("edit/{id?}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Edit(EmployeeView model)
         {
             if(model.Age < 18 || model.Age > 65)
@@ -86,6 +88,7 @@ namespace WebStore.Controllers
 
         // TODO: сделать как на вебинаре!
         [Route("delete/{id}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Delete(int id)
         {
             _employeesData.Delete(id);

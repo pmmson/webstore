@@ -66,12 +66,13 @@ namespace WebStore.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             
-            var user = new User { UserName = model.UserName }; //создаем сущность пользователь
+            var user = new User { UserName = model.UserName, Email = model.UserEmailAddress }; //создаем сущность пользователь
             var createResult = await _userManager.CreateAsync(user, model.Password); //используем менеджер для создания
 
             if (createResult.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false); //если успешно - производим логин
+                await _userManager.AddToRoleAsync(user, "User"); // добавляем роль пользователю
                 return RedirectToAction("Index", "Home");
             }
 
