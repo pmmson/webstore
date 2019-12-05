@@ -10,13 +10,13 @@ using WebStore.Models;
 namespace WebStore.Controllers
 {
     [Authorize]
+    [Route("users")]
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _employeesData;
 
         public EmployeesController(IEmployeesData employeesData) => _employeesData = employeesData;
 
-        [Route("users")]
         public IActionResult Index()
         {
             return View(_employeesData.GetAll());
