@@ -35,29 +35,6 @@
                     <div class="logo pull-left">
                         <a asp-controller="Home" asp-action="Index"><img src="~/images/home/logo.png" alt="" /></a>
                     </div>
-                    <div class="btn-group pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                USA
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canada</a></li>
-                                <li><a href="#">UK</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                DOLLAR
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canadian Dollar</a></li>
-                                <li><a href="#">Pound</a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-sm-8">
                     <vc:login-logout></vc:login-logout>
@@ -86,10 +63,10 @@
                                 <a href="#">Каталог<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a asp-controller="Catalog" asp-action="Shop">Товары</a></li>
-                                    <li><a asp-controller="Catalog" asp-action="ProductDetails">Product Details</a></li>
+                                    <li><a asp-controller="Catalog" asp-action="ProductDetails">Детали товара</a></li>
                                     <li><a asp-controller="Home" asp-action="CheckOut">Checkout</a></li>
-                                    <li><a asp-controller="Home" asp-action="Cart">Cart</a></li>
-                                    <li><a asp-controller="Home" asp-action="Login">Login</a></li>
+                                    <li><a asp-controller="Cart" asp-action="Details">Корзина</a></li>
+                                    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -99,7 +76,6 @@
                                     <li><a asp-controller="Home" asp-action="BlogSingle">Blog Single</a></li>
                                 </ul>
                             </li>
-                            <li><a asp-controller="Home" asp-action="Error404">404</a></li>
                             <li><a asp-controller="Home" asp-action="ContactUs">Contact</a></li>
                             <li><a asp-controller="Employees" asp-action="Index">Сотрудники</a></li>
                         </ul>

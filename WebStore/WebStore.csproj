@@ -5,10 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.App">
+      <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+      <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Views\Home\Partial\" />
+    <Folder Include="Models\Cart\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
 
   <ItemGroup>

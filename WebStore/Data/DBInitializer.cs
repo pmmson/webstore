@@ -242,9 +242,9 @@ namespace WebStore.Data
                         context.Sections.Add(section);
                     }
 
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Sections] ON");
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Sections] ON");
                     context.SaveChanges();
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Sections] OFF");
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Sections] OFF");
                     trans.Commit();
                 }
 
@@ -300,9 +300,9 @@ namespace WebStore.Data
                         context.Brands.Add(brand);
                     }
 
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] ON");
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] ON");
                     context.SaveChanges();
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] OFF");
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] OFF");
                     trans.Commit();
                 }
 
@@ -436,9 +436,9 @@ namespace WebStore.Data
                     {
                         context.Products.Add(product);
                     }
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Products] ON");
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Products] ON");
                     context.SaveChanges();
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Products] OFF");
+                    //context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Products] OFF");
                     trans.Commit();
                 }
 
