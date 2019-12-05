@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 
 namespace WebStore.Controllers
 {
-    [Route("users")]
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _employeesData;
 
         public EmployeesController(IEmployeesData employeesData) => _employeesData = employeesData;
 
+        [Route("users")]
         public IActionResult Index()
         {
             return View(_employeesData.GetAll());

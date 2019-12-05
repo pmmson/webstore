@@ -27,7 +27,7 @@ namespace WebStore.Infrastructure.Implementations.Sql
             var query = _context.Products.AsQueryable();
 
             if (filter.BrandId.HasValue)
-                query = query.Where(c => c.BrandId.HasValue && c.BrandId.Value.Equals(filter.BrandId.Value));
+                query = query.Where(c => c.BrandId == filter.BrandId);
             if (filter.SectionId.HasValue)
                 query = query.Where(c => c.SectionId.Equals(filter.SectionId.Value));
 
