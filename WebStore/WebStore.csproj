@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\Partial\" />
     <Folder Include="Models\Cart\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Areas\" />
@@ -36,6 +35,7 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="wwwroot\admin\images\" />
     <Folder Include="Models\Order\" />
+    <Folder Include="Views\Profile\" />
   </ItemGroup>
 
   <ItemGroup>
