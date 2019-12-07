@@ -32,6 +32,14 @@ namespace WebStore
         {
             services.AddMvc();
 
+            // https://docs.microsoft.com/ru-ru/aspnet/core/host-and-deploy/linux-apache?view=aspnetcore-3.0
+            // service fo hosting
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
+
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SqlProductData>();
@@ -77,6 +85,10 @@ namespace WebStore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            // https://docs.microsoft.com/ru-ru/aspnet/core/host-and-deploy/linux-apache?view=aspnetcore-3.0
+            app.UseForwardedHeaders();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -84,12 +96,6 @@ namespace WebStore
             }
 
             app.UseStaticFiles();
-
-            // https://docs.microsoft.com/ru-ru/aspnet/core/host-and-deploy/linux-apache?view=aspnetcore-3.0
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
 
             app.UseAuthentication();
 
